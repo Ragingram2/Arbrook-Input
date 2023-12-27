@@ -1,7 +1,7 @@
 createProject("engine","input","StaticLib")
 includedirs { 
     basicIncludes,
-    "../rendering/include/glfw/include/"
+    "../graphics/include/glfw/include/"
  }
  
 files { 
