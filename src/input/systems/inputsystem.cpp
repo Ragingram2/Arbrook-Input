@@ -6,13 +6,8 @@ namespace rythe::input
 	bool InputSystem::m_initialize = false;
 	bool InputSystem::mouseCaptured = true;
 
-	void InputSystem::setup()
+	void InputSystem::initialize()
 	{
-		if (!m_windowHandle)
-		{
-			log::error("Window Handle was not registered with the input system");
-			return;
-		}
 		log::info("Initializing Input System");
 		m_manager = new gainput::InputManager(true);
 		mouseId = m_manager->CreateDevice<gainput::InputDeviceMouse>();
@@ -39,8 +34,10 @@ namespace rythe::input
 
 	void InputSystem::update()
 	{
-		if (m_initialize)
-			setup();
+		if (!m_windowHandle)
+			return;
+		else if(m_initialize)
+			initialize();
 
 		m_manager->Update();
 

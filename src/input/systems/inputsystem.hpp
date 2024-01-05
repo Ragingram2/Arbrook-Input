@@ -33,7 +33,8 @@ namespace rythe::input
 		math::vec2 mouseDelta;
 	public:
 		static bool mouseCaptured;
-		void setup();
+
+		void initialize();
 		void update();
 		void shutdown();
 
