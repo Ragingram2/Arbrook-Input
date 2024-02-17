@@ -28,7 +28,7 @@ namespace rythe::input
 		map->MapFloat(inputmap::method::E, keyboardId, gainput::KeyE);
 		map->MapFloat(inputmap::method::Q, keyboardId, gainput::KeyQ);
 
-		map->MapBool(inputmap::method::NUM1, keyboardId, gainput::Key1);
+		map->MapBool(inputmap::method::F1, keyboardId, gainput::KeyF1);
 		m_initialize = false;
 	}
 
@@ -62,8 +62,8 @@ namespace rythe::input
 			EventBus::raiseEvent<key_input<inputmap::method::ESCAPE>>(keyEvnt);
 		}
 		{
-			key_input<inputmap::method::NUM1> keyEvnt{ map->GetBool(inputmap::method::NUM1),map->GetBoolPrevious(inputmap::method::NUM1) };
-			EventBus::raiseEvent<key_input<inputmap::method::NUM1>>(keyEvnt);
+			key_input<inputmap::method::F1> keyEvnt{ map->GetBool(inputmap::method::F1),map->GetBoolPrevious(inputmap::method::F1) };
+			EventBus::raiseEvent<key_input<inputmap::method::F1>>(keyEvnt);
 		}
 		{
 			key_input<inputmap::method::MOUSE_LEFT> keyEvnt{ map->GetBool(inputmap::method::MOUSE_LEFT),map->GetBoolPrevious(inputmap::method::MOUSE_LEFT) };
