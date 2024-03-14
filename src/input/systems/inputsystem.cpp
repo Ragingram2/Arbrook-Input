@@ -75,8 +75,11 @@ namespace rythe::input
 		}
 
 		mousePos = math::vec2(map->GetFloat(inputmap::method::MOUSE_X), map->GetFloat(inputmap::method::MOUSE_Y));
+		Input::mousePos = mousePos;
 		lastMousePos = math::vec2(map->GetFloatPrevious(inputmap::method::MOUSE_X), map->GetFloatPrevious(inputmap::method::MOUSE_Y));
+		Input::lastMousePos = lastMousePos;
 		mouseDelta = math::vec2(map->GetFloatDelta(inputmap::method::MOUSE_X), map->GetFloatDelta(inputmap::method::MOUSE_Y));
+		Input::mouseDelta = mouseDelta;
 		{
 			core::events::mouse_input mouseEvnt{ mousePos, lastMousePos, mouseDelta };
 			core::events::EventBus::raiseEvent<core::events::mouse_input>(mouseEvnt);
