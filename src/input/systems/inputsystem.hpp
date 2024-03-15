@@ -24,6 +24,7 @@ namespace rythe::input
 		inline static math::vec2 mousePos;
 		inline static math::vec2 lastMousePos;
 		inline static math::vec2 mouseDelta;
+		inline static bool mouseCaptured = true;
 	};
 
 	class InputSystem : public core::System<InputSystem,int>
@@ -40,7 +41,6 @@ namespace rythe::input
 		math::vec2 lastMousePos;
 		math::vec2 mouseDelta;
 	public:
-		static bool mouseCaptured;
 
 		void initialize();
 		void update();

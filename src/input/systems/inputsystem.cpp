@@ -4,7 +4,6 @@ namespace rythe::input
 {
 	GLFWwindow* InputSystem::m_windowHandle;
 	bool InputSystem::m_initialize = false;
-	bool InputSystem::mouseCaptured = true;
 
 	void InputSystem::initialize()
 	{
@@ -85,7 +84,7 @@ namespace rythe::input
 			core::events::EventBus::raiseEvent<core::events::mouse_input>(mouseEvnt);
 		}
 
-		if (mouseCaptured)
+		if (Input::mouseCaptured)
 			glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		else
 			glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
