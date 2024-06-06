@@ -84,10 +84,10 @@ namespace rythe::input
 			core::events::EventBus::raiseEvent<core::events::mouse_input>(mouseEvnt);
 		}
 
-		if (Input::mouseCaptured)
-			glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		else
-			glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		//if (Input::mouseCaptured)
+		//	glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		//else
+		//	glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 
 	void InputSystem::shutdown()
