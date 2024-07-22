@@ -17,7 +17,7 @@
 namespace rythe::input
 {
 	using namespace rythe::core::events;
-	using moveInput = axis_input < axis_data{ inputmap::method::A, inputmap::method::D, 1, -1 }, axis_data{ inputmap::method::W, inputmap::method::S, 1, -1 }, axis_data{ inputmap::method::Q, inputmap::method::E, 1, -1 } > ;
+	using moveInput = axis_input < axis_data{ inputmap::method::A, inputmap::method::D, 1, -1, 0 }, axis_data{ inputmap::method::W, inputmap::method::S, 1, -1, 0 }, axis_data{ inputmap::method::Q, inputmap::method::E, 1, -1, 0 } > ;
 
 	struct Input
 	{
@@ -29,7 +29,7 @@ namespace rythe::input
 		inline static bool isPressed = false;
 	};
 
-	class InputSystem : public core::System<InputSystem,int>
+	class InputSystem : public core::System<InputSystem, int>
 	{
 	private:
 		static GLFWwindow* m_windowHandle;
@@ -37,7 +37,7 @@ namespace rythe::input
 		gainput::InputMap* map;
 		gainput::InputManager* m_manager;
 		gainput::DeviceId mouseId;
-		gainput::DeviceId keyboardId; 
+		gainput::DeviceId keyboardId;
 		int width, height;
 		math::vec2 mousePos;
 		math::vec2 lastMousePos;

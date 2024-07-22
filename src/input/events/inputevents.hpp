@@ -15,6 +15,7 @@ namespace rythe::core::events
 	{
 		inputmap::method positive, negative;
 		float max, min;
+		float value;
 	};
 
 	template<inputmap::method Key>
@@ -35,9 +36,8 @@ namespace rythe::core::events
 	struct axis_input final : public event<axis_input<Inputs...>>
 	{
 	public:
-		//std::vector<axis_data> m_axes = { Inputs... };
-		std::unordered_map<std::string, float> m_values;
-		float getValue(const std::string& axisName) { return m_values[axisName]; }
+		std::vector<axis_data> m_axes = { Inputs... };
+		float getValue(int index) { return m_axes[index].value; }
 	};
 
 	struct mouse_input final : public event<mouse_input>

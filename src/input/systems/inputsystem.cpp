@@ -35,7 +35,7 @@ namespace rythe::input
 	{
 		if (!m_windowHandle)
 			return;
-		else if(m_initialize)
+		else if (m_initialize)
 			initialize();
 
 		m_manager->Update();
@@ -50,9 +50,9 @@ namespace rythe::input
 
 		{
 			moveInput axisEvnt;
-			axisEvnt.m_values.emplace("Left/Right", map->GetFloat(inputmap::method::D) - map->GetFloat(inputmap::method::A));
-			axisEvnt.m_values.emplace("Forward/Backward", map->GetFloat(inputmap::method::W) - map->GetFloat(inputmap::method::S));
-			axisEvnt.m_values.emplace("Up/Down", map->GetFloat(inputmap::method::E) - map->GetFloat(inputmap::method::Q));
+			axisEvnt.m_axes[0] = axis_data{ .value = map->GetFloat(inputmap::method::D) - map->GetFloat(inputmap::method::A) };
+			axisEvnt.m_axes[1] = axis_data{ .value = map->GetFloat(inputmap::method::W) - map->GetFloat(inputmap::method::S) };
+			axisEvnt.m_axes[2] = axis_data{ .value = map->GetFloat(inputmap::method::E) - map->GetFloat(inputmap::method::Q) };
 			EventBus::raiseEvent<moveInput>(axisEvnt);
 		}
 
@@ -73,6 +73,7 @@ namespace rythe::input
 			EventBus::raiseEvent<key_input<inputmap::method::MOUSE_RIGHT>>(keyEvnt);
 		}
 
+
 		mousePos = math::vec2(map->GetFloat(inputmap::method::MOUSE_X), map->GetFloat(inputmap::method::MOUSE_Y));
 		Input::mousePos = mousePos;
 		lastMousePos = math::vec2(map->GetFloatPrevious(inputmap::method::MOUSE_X), map->GetFloatPrevious(inputmap::method::MOUSE_Y));
@@ -83,6 +84,7 @@ namespace rythe::input
 			core::events::mouse_input mouseEvnt{ mousePos, lastMousePos, mouseDelta };
 			core::events::EventBus::raiseEvent<core::events::mouse_input>(mouseEvnt);
 		}
+
 
 		//if (Input::mouseCaptured)
 		//	glfwSetInputMode(m_windowHandle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
